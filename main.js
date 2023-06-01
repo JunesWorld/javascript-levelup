@@ -288,3 +288,17 @@ console.log(...fruits) // Apple Banana Cherry : 문자 = console.log('Apple', 'B
 // }
 const toObject = (a, b, ...c) => ({ a, b, c })
 console.log(toObject(...fruits)) // {a: "Apple", b: "Banana", c: "Cherry"}
+
+
+// 데이터 불변성(Immutability)
+// 원시 데이터 : String, Number, Boolean, undefined, null
+// |- 쉽게 말해 메모리에 저장되어 있으면(생긴것이 같다면) === true
+
+// 참조형 데이터: Object, Array, Function
+// |- 같은 메모리를 바라보고 있다. 그래서 값을 바꾸면 모두 변경된다.
+// let a = { k: 1 }
+// let b = { k: 1 }
+// console.log(a, b, a === b) // { k: 1 } { k: 1 } false
+// a.k = 7 
+// b = a  
+// console.log(a, b, a === b) // { k: 7 } { k: 7 } true
