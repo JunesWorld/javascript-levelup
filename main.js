@@ -250,10 +250,9 @@ const values = keys.map(key => user[key]) // callback 3번 반복
 console.log(values) // ["June", 30, "june@gmail.com"] 
 
 
-/**
- * 구조 분해 할당 (Destructuring assignment)
- * 비구조화 할당
- */
+
+// * 구조 분해 할당 (Destructuring assignment)
+// * 비구조화 할당
 
 const userA = {
   name: 'June',
@@ -272,3 +271,20 @@ console.log(userA.address) // USA
 
 const [, , g] = fruits
 console.log(g) // Cherry
+
+
+// 전개 연산자 (Spread) : ...
+
+console.log(fruits) // ["Apple", "Banana", "Cherry"] : 배열
+console.log(...fruits) // Apple Banana Cherry : 문자 = console.log('Apple', 'Banana', 'Cherry')
+
+// ...c = rest parameter : 
+// function toObject(a, b, ...c) {
+//   return {
+//     a,
+//     b: b,
+//     c: c
+//   }
+// }
+const toObject = (a, b, ...c) => ({ a, b, c })
+console.log(toObject(...fruits)) // {a: "Apple", b: "Banana", c: "Cherry"}
