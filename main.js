@@ -71,3 +71,58 @@ console.log('floor: ', Math.floor(3.14)) // 3
 console.log('round: ', Math.round(3.14)) // 3
 // random 0.xxx
 console.log('random: ', Math.random()) 
+
+
+/**
+ * 배열
+ * Array mdn
+ */
+const numbers = [1, 2, 3, 4]
+const fruits = ['Apple', 'Banana', 'Cherry']
+
+console.log(numbers[1]) // 2
+console.log(fruits[2]) // Cherry
+
+// .length = item 갯수 반환
+console.log(numbers.length) // 4
+console.log(fruits.length) // 3
+console.log([1, 2].length) // 2
+
+// .concat() 
+// = 두 개의 배열 데이터를 병합해서 새로운 배열 데이터를 반환, 
+// 원본 배열 데이터 손상x
+console.log(numbers.concat(fruits))
+console.log(numbers)
+console.log(fruits)
+
+// .forEach()
+// callback 함수
+// 새로 반환 X
+fruits.forEach(function (element, index, array) {
+  console.log(element, index, array)
+})
+
+// .map() = 새로운 배열[]로 출력
+const a = fruits.forEach((fruit, index) => {
+  console.log(`${fruit}-${index}`)
+}) // Apple-0 / Banana-1 / Cherry-2
+console.log(a) // undefined
+
+// const b = fruits.map(function (fruit, index) {
+//   return `${fruit}-${index}`
+// })
+// console.log(b) // ["Apple-0", "Banana-1", "Cherry-2"]
+
+// const b = fruits.map(function (fruit, index) {
+//   return {
+//     id: index,
+//     name: fruit
+//   }
+// })
+// console.log(b) // [{id: 0, name: "Apple"}, {id: 1, name: "Banana"}, {id: 2, name: "Cherry"}]
+
+const b = fruits.map((fruit, index) => ({
+    id: index,
+    name: fruit
+  }))
+console.log(b) // [{id: 0, name: "Apple"}, {id: 1, name: "Banana"}, {id: 2, name: "Cherry"}]
