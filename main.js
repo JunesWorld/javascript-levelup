@@ -361,3 +361,49 @@ userB.emails.push('sung@gmail.com')
 console.log(user.emails === copyUser.emails) // 얕은 복사 일 때 =true : 같은 메모리를 바라본다. / 깊은 복사 일 때 = false
 console.log('userB', userB) // email 2개
 console.log('copyUser', copyUser) // email 1개
+
+
+/**
+ * Lodash -> Google
+ * import _ from 'lodash'
+ * _.uniqueBy(중복되는 값이 있는 배열 데이터, 중복을 구분할 고유한 속성)
+ * 합치기 전 = _.unionBy(usersA, usersB, 'userId')
+ * _.find(배열 데이터, 객체 데이터)
+ * _.findIndex(배열 데이터, 객체 데이터)
+ * _.remove(배열 데이터, 객체 데이터)
+ */
+
+// [배열] {객체}
+const usersA = [
+  { userId: '1', name: 'JUNE' },
+  { userId: '2', name: 'Neo' }
+]
+const usersB = [
+  { userId: '1', name: 'JUNE' },
+  { userId: '3', name: 'Amy' }
+]
+// concat = 병합 (중복)
+const usersC = usersA.concat(usersB)
+console.log('concat', usersC) // 1,2,1,3
+// _.uniqueBy(중복되는 값이 있는 배열 데이터, 중복을 구분할 고유한 속성)
+console.log('uniqBy', _.uniqBy(usersC, 'userId')) // 1,2,3
+
+// 합치기 전 = _.unionBy(usersA, usersB, 'userId')
+const usersD = _.unionBy(usersA, usersB, 'userId')
+console.log('unionBy', usersD)
+
+const users = [
+  { userId: '1', name: 'JUNE' },
+  { userId: '2', name: 'NEO' },
+  { userId: '3', name: 'Amy' },
+  { userId: '4', name: 'Evan' },
+  { userId: '5', name: 'Lewis' }
+]
+
+const foundUser = _.find(users, { name: 'Amy' })
+const foundUserIndex = _.findIndex(users, { name: 'Amy' })
+console.log(foundUser) 
+console.log(foundUserIndex)
+
+_.remove(users, { name: 'JUNE' })
+console.log(users)
