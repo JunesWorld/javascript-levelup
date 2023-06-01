@@ -80,7 +80,7 @@ console.log('random: ', Math.random())
 
 /**
  * 배열
- * Array mdn
+ * Google: Array mdn
  */
 const numbers = [1, 2, 3, 4]
 const fruits = ['Apple', 'Banana', 'Cherry']
@@ -185,3 +185,66 @@ fruits.reverse()
 
 console.log(numbers)
 console.log(fruits)
+
+
+/**
+ * 객체
+ * Google : Object mdn
+ */
+
+// Objcet.assign() : 정적 method
+// 열거할 수 있는 하나 이상의 출처 객체(source)로부터 대상 객체(target)로 속성을 복사할 때 사용
+// 대상 객체를 반환
+
+// const target = { a: 1, b: 2}
+// const source = { b: 4, c: 5}
+
+// const returnedTarget = Object.assign(target, source)
+// console.log(target) // {a: 1, b: 4, c: 5}
+// console.log(returnedTarget) // {a: 1, b: 4, c: 5}
+
+const userAge = {
+  // key : value
+  name: 'June',
+  age: 30
+}
+const userEmail = {
+  name: 'June',
+  email: 'june@gmail.com'
+}
+
+// const target = Object.assign(userAge, userEmail)
+// console.log(target) // {name: "June", age: 30, email: "june@gmail.com"}
+// console.log(userAge)// {name: "June", age: 30, email: "june@gmail.com"}
+// // 참조형 Data = {}, [], function = 메모리에 저장 = userAge와 target은 같은 곳을 바라보고 있다
+// console.log(target === userAge) // true
+
+// const target = Object.assign({}, userAge, userEmail)
+// console.log(target) // {name: "June", age: 30, email: "june@gmail.com"}
+// console.log(userAge)// {name: "June", age: 30}
+// console.log(target === userAge) // false
+
+const target = Object.assign({}, userAge)
+console.log(target) // {name: "June", age: 30}
+console.log(userAge)// {name: "June", age: 30}
+// 복사되었지만 다른 Memory에 저장
+console.log(target === userAge) // false
+
+// const a = { k: 123 }
+// const b = { k: 123 }
+// console.log(a === b) // false
+
+
+// Object,keys
+const user = {
+  name: 'June',
+  age: 30,
+  email: 'june@gmail.com'
+}
+
+const keys = Object.keys(user)
+console.log(keys) // ['name', 'age', 'email']
+console.log(user['email']) // june@gmail.com
+
+const values = keys.map(key => user[key]) // callback 3번 반복
+console.log(values) // ["June", 30, "june@gmail.com"] 
