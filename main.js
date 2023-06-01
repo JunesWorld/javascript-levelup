@@ -181,7 +181,7 @@ numbers.unshift(0)
 console.log(numbers) // [0, 1, 2, 3, 4, 5]
 
 numbers.reverse()
-fruits.reverse()
+// fruits.reverse()
 
 console.log(numbers)
 console.log(fruits)
@@ -235,7 +235,7 @@ console.log(target === userAge) // false
 // console.log(a === b) // false
 
 
-// Object,keys
+// Object.keys
 const user = {
   name: 'June',
   age: 30,
@@ -248,3 +248,27 @@ console.log(user['email']) // june@gmail.com
 
 const values = keys.map(key => user[key]) // callback 3번 반복
 console.log(values) // ["June", 30, "june@gmail.com"] 
+
+
+/**
+ * 구조 분해 할당 (Destructuring assignment)
+ * 비구조화 할당
+ */
+
+const userA = {
+  name: 'June',
+  age: 30,
+  email: 'june@gmail.com',
+  address: 'USA'
+}
+// 기본값 지정해줄 수 있다.
+const { name: june, age, address = 'Korea' } = userA
+// E.g, user.address
+
+console.log(`사용자의 이름은 ${june}입니다.`)
+console.log(`${june}의 나이는 ${age}세입니다.`)
+console.log(`${june}의 이메일 주소는 ${userA.email}입니다.`)
+console.log(userA.address) // USA
+
+const [, , g] = fruits
+console.log(g) // Cherry
