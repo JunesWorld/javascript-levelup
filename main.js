@@ -1,5 +1,16 @@
 // JS 데이터
-import _ from 'lodash'
+
+// module.js
+// Default export : 이름 지정 x
+// Named export : 이름 지정
+import _ from 'lodash' // from `node_modules`
+import getType from './getType' // getType.js
+// import { random, userC as kevin } from './getRandom' // getRandom.js
+import * as R from './getRandom' // *(와이드카드) = 모든 내용
+
+// console.log(userC)
+// console.log(kevin) // as
+console.log(R)
 
 /**
  * 화살표 함수
