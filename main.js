@@ -1,4 +1,5 @@
 // JS 데이터
+import _ from 'lodash'
 
 /**
  * 화살표 함수
@@ -302,3 +303,50 @@ console.log(toObject(...fruits)) // {a: "Apple", b: "Banana", c: "Cherry"}
 // a.k = 7 
 // b = a  
 // console.log(a, b, a === b) // { k: 7 } { k: 7 } true
+
+/**
+ * 복사
+ * 얇은 복사 : 참조형 데이터(객체, 배열), 내부에 다른 데이터가 없다면 사용
+ * 깊은 복사 : 참조형 데이터 안에 또 다른 참조형 데이터가 있을 때 사용 ex) Emails
+ *  |- Google : lodash mdn -> clone
+ */
+
+// userB 내용만 바꾸어도 copyUser 값도 바뀐다
+// const userB = {
+//   name: 'June',
+//   age: 30,
+//   emails: ['june@gmail.com']
+// }
+// const copyUser = userB
+// console.log(copyUser === userB) // true
+
+// userB.age = 22
+// console.log('userB', userB) // [Log] userB – {name: "June", age: 22, emails: ["june@gmail.com"]}
+// console.log('copyUser', copyUser) // [Log] copyUser – {name: "June", age: 22, emails: ["june@gmail.com"]} 
+
+
+// 얕은 복사(Shallow copy)
+const userB = {
+  name: 'June',
+  age: 30,
+  emails: ['june@gmail.com']
+}
+// 얕은 복사
+// const copyUser = Object.assign({}, userB)
+// const copyUser = {...userB}
+
+// 깊은 복사
+const copyUser = _.cloneDeep(userB)
+console.log(copyUser === userB) // false
+
+userB.age = 22
+console.log('userB', userB) // [Log] userB – {name: "June", age: 22, emails: ["june@gmail.com"]}
+console.log('copyUser', copyUser) // [Log] copyUser – {name: "June", age: 30, emails: ["june@gmail.com"]} 
+
+
+// 깊은 복사(Deep copy)
+// lodash pkg 도움을 받는다
+userB.emails.push('sung@gmail.com')
+console.log(user.emails === copyUser.emails) // 얕은 복사 일 때 =true : 같은 메모리를 바라본다. / 깊은 복사 일 때 = false
+console.log('userB', userB) // email 2개
+console.log('copyUser', copyUser) // email 1개
