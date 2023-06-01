@@ -7,6 +7,7 @@ import _ from 'lodash' // from `node_modules`
 import getType from './getType' // getType.js
 // import { random, userC as kevin } from './getRandom' // getRandom.js
 import * as R from './getRandom' // *(와이드카드) = 모든 내용
+import myData from './myData.json'
 
 // console.log(userC)
 // console.log(kevin) // as
@@ -65,13 +66,13 @@ console.log(result) // 6
 const pi = 3.14159265358979
 console.log(pi)
 
-const str = pi.toFixed(2) 
-console.log(str) // 3.14
-console.log(typeof str) // string
+const strA = pi.toFixed(2) 
+console.log(strA) // 3.14
+console.log(typeof strA) // string
 
 // 전역함수 : parseInt, parseFloat
-const integer = parseInt(str)
-const float = parseFloat(str)
+const integer = parseInt(strA)
+const float = parseFloat(strA)
 console.log(integer) // 3
 console.log(float) // 3.14
 console.log(typeof integer, typeof float) // number number
@@ -407,3 +408,38 @@ console.log(foundUserIndex)
 
 _.remove(users, { name: 'JUNE' })
 console.log(users)
+
+
+/**
+ * JSON (JavaScript Object Notation)
+ * 자바스크립트의 객체 표기법
+ * " "로 표기
+ * package.json & myData.json 파일 참고!
+ * import myData from './myData.json'
+ * 자동으로 변환되서 객체데이터로 출력되는 것이지 json 파일은 하나의 문자 데이터이다!
+ * JSON.stringify = 문자데이터화 해줌 str
+ * JSON.parse = str를 parse라는 전역객체에 인수로 넣어 분석해서 obj로 재조립 -> 다시 자바스크립트의 실제 데이터로 변환!
+ */
+
+console.log(myData)
+
+const userE = {
+  name: 'June',
+  age: 30,
+  email: [
+    'june@gmail.com',
+    'sung@gmail.com'
+  ]
+}
+console.log('userE', userE)
+
+// JSON.stringify = 문자데이터화 해줌 str
+const str = JSON.stringify(userE)
+console.log('str', str)
+console.log(typeof str)
+
+// JSON.parse = str를 parse라는 전역객체에 인수로 넣어 분석해서 obj로 재조립 -> 다시 자바스크립트의 실제 데이터로 변환!
+const obj = JSON.parse(str)
+console.log('obj', obj)
+
+
