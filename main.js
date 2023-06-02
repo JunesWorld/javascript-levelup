@@ -8,6 +8,7 @@ import getType from './getType' // getType.js
 // import { random, userC as kevin } from './getRandom' // getRandom.js
 import * as R from './getRandom' // *(와이드카드) = 모든 내용
 import myData from './myData.json'
+import axios from 'axios'
 
 // console.log(userC)
 // console.log(kevin) // as
@@ -476,3 +477,39 @@ console.log(JSON.parse(localStorage.getItem('userF')))
 // obj.age = 22
 // console.log(obj)
 // localStorage.setItem('user', JSON.stringify(obj))
+
+
+/**
+ * OMDb API -> Google
+ * 영화 데이터를 받아 main.js에서 출력
+ */
+
+// Query String
+// 주소?속성=값&속성=값&속성=값
+// 속성
+// |- apikey : 사용자 인증
+// |- s = 영화정보 : 어떠한 영화 정보를 검색하고 싶은지
+
+// 사용방법 -> OMDb API -> Google
+// Usage : 주소 복사(http://www.omdbapi.com/?apikey=[yourkey]&)
+// |- yourkey : 7035c60c / s=frozen
+// 완성 = https://www.omdbapi.com/?apikey=7035c60c&s=frozen
+
+// main.js에서 요청 처리해 줄 수 있게 axios 활용!
+// https://github.com/axios/axios 
+// 설치 = ctrl + c
+// npm install axios 
+// import axios from 'axios'
+
+function fetchMovies() {
+  axios
+    .get('https://www.omdbapi.com/?apikey=7035c60c&s=frozen')
+    .then(res => {
+      console.log(res)
+      const h1El = document.querySelector('h1')
+      const imgEl = document.querySelector('img')
+      h1El.textContent = res.data.Search[0].Title
+      imgEl.src = res.data.Search[0].Poster
+    })
+}
+fetchMovies()
