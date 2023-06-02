@@ -443,3 +443,36 @@ const obj = JSON.parse(str)
 console.log('obj', obj)
 
 
+/**
+ * Storage
+ * Google : local storage mdn
+ * 작업관리자 Application
+ * |- Local : 데이터 만료 x (활용성이 높다)
+ * |- Session : 페이지를 닫을 때 데이터가 사라진다.
+ */
+
+const userF = {
+  name: 'June',
+  age: 30,
+  email: [
+    'june@gmail.com',
+    'sung@gmail.com'
+  ]
+}
+
+// localStorage.setItem('userF', userF) // local storage [object Object]
+
+// 문자 데이터로 출력 & Storage에서 삭제되지 않는다
+localStorage.setItem('userF', JSON.stringify(userF)) 
+console.log('---')
+console.log(JSON.parse(localStorage.getItem('userF')))
+
+// 삭제
+// localStorage.removeItem('userF')
+
+// 수정
+// const str = localStorage.getItem('user')
+// const obj = JSON.parse(str)
+// obj.age = 22
+// console.log(obj)
+// localStorage.setItem('user', JSON.stringify(obj))
